@@ -1,0 +1,22 @@
+.container {
+  list-style: none;
+  :global {
+    .loading {
+      height: 2em;
+      width: 6em;
+      background: #eee;
+    }
+    .loading:after {
+      content: "\A.\A..\A...";
+      display: inline-table;
+      white-space: pre;
+      animation: spin4 2s steps(4) infinite;
+    }
+  }
+}
+
+@keyframes spin4 {
+  to {
+    transform: translateY(-6em);
+  }
+}

@@ -1,0 +1,117 @@
+.shape>ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.shape>ul>li {
+  height: 120px;
+  width: 240px;
+  line-height: 120px;
+  margin: 10px;
+  background-color: skyblue;
+}
+
+.shape h4 {
+  text-align: center;
+}
+
+.shape>.ellipse {
+  li:first-child {
+    border-radius: 50%;
+  }
+  li:nth-child(2) {
+    border-radius: 50% / 100% 100% 0 0;
+  }
+  li:nth-child(3) {
+    border-radius: 100% 0 0 100% / 50%;
+  }
+  li:nth-child(4) {
+    border-top-left-radius: 100%;
+  }
+  li:nth-child(5) {
+    position: relative;
+    background-color: transparent;
+  }
+  li:nth-child(5)::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    transform: skewX(-10deg);
+    background-color: red;
+  }
+}
+
+.shape>.corners {
+  li:first-child {
+    background: linear-gradient(-45deg, transparent 16px, skyblue 0);
+  }
+  li:nth-child(2) {
+    background: linear-gradient(45deg, transparent 16px, skyblue 0) left, linear-gradient(-45deg, transparent 16px, skyblue 0) right;
+    background-size: 50% 100%;
+    background-repeat: no-repeat;
+  }
+  li:nth-child(3) {
+    background: linear-gradient(135deg, transparent 16px, skyblue 0) top left, linear-gradient(-135deg, transparent 16px, skyblue 0) top right, linear-gradient(45deg, transparent 16px, skyblue 0) bottom left, linear-gradient(-45deg, transparent 16px, skyblue 0) bottom right;
+    background-size: 50%;
+    background-repeat: no-repeat;
+  }
+  li:nth-child(4) {
+    background: radial-gradient( circle at top left, transparent 15px, skyblue 0);
+  }
+  li:nth-child(5) {
+    background: radial-gradient(circle at top left, transparent 15px, skyblue 0) left, radial-gradient(circle at top right, transparent 15px, skyblue 0) right;
+    background-size: 50% 100%;
+    background-repeat: no-repeat;
+  }
+  li:nth-child(6) {
+    background: radial-gradient(circle at top left, transparent 15px, skyblue 0) top left, radial-gradient(circle at top right, transparent 15px, skyblue 0) top right, radial-gradient(circle at bottom left, transparent 15px, skyblue 0) bottom left, radial-gradient(circle at bottom right, transparent 15px, skyblue 0) bottom right;
+    background-size: 50%;
+    background-repeat: no-repeat;
+  }
+}
+
+.shape .trapezoid {
+  li:first-child {
+    position: relative;
+    display: inline-block;
+    padding: 0.5em 1em 0.35em;
+  }
+  li:first-child::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    transform: perspective(0.5em) rotate(5deg);
+    background-color: red;
+  }
+}
+
+.pie {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: yellowgreen;
+  background-image: linear-gradient(to right, transparent 50%, currentColor 0);
+  color: #655;
+}
+
+.pie::before {
+  content: '';
+  display: block;
+  margin-left: 50%;
+  height: 100%;
+  border-radius: 0 100% 100% 0 / 50%;
+  background-color: inherit;
+  transform-origin: left;
+}
