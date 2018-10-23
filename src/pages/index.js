@@ -3,6 +3,15 @@ import { connect } from 'dva';
 import styles from './index.css';
 
 function IndexPage() {
+  const p = Promise.resolve(21)
+  p.then(v => {
+    console.log('v', v);
+    return new Promise((resolve, reject) => {
+      resolve(v * 2)
+    })
+  }).then(v => {
+    console.log('v', v);
+  })
   return (
     <div className={styles.normal}>
       <h1 className={styles.title}>Yay! Welcome to dva!</h1>
