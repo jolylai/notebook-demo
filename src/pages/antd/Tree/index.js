@@ -45,7 +45,6 @@ export default class index extends Component {
   };
 
   render() {
-    console.log("props", this.props);
     return (
       <Tree loadData={this.onLoadData}>
         {this.renderTreeNodes(this.state.treeData)}

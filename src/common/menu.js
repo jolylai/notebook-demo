@@ -44,6 +44,18 @@ const menuData = [
         icon: "loading"
       }
     ]
+  },
+  {
+    name: "Zent",
+    icon: "form",
+    path: "zent",
+    children: [
+      {
+        name: "加载",
+        path: "loading",
+        icon: "loading"
+      }
+    ]
   }
 ];
 
