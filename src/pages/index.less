@@ -1,0 +1,77 @@
+.normal {
+  font-family: Georgia, sans-serif;
+  margin-top: 3em;
+  text-align: center;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: normal;
+  letter-spacing: -1px;
+}
+
+.welcome {
+  height: 328px;
+  background: url(../assets/yay.jpg) no-repeat center 0;
+  background-size: 388px 328px;
+}
+
+.list {
+  font-size: 1.2em;
+  margin-top: 1.8em;
+  list-style: none;
+  line-height: 1.5em;
+}
+
+.list code {
+  background: #f7f7f7;
+}
+
+a+a::before {
+  content: '';
+  font-size: 0;
+  padding: 10px 3px 1px;
+  margin-left: 6px;
+  border-left: 1px solid gray;
+}
+
+.box {
+  padding: 10% 50%;
+  position: relative;
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.menuIcon {
+  display: inline-block;
+  width: 140px;
+  height: 10px;
+  padding: 35px 0;
+  border-top: 10px solid;
+  border-bottom: 10px solid;
+  background-color: currentColor;
+  background-clip: content-box;
+}
+
+.dotIcon {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  border: 10px solid;
+  border-radius: 50%;
+  background-color: currentColor;
+  background-clip: content-box;
+}
+
+.father {
+  width: 300px;
+  .son {
+    margin: 0 -20px;
+  }
+}

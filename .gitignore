@@ -14,3 +14,6 @@ yarn-error.log
 # umi
 .umi
 .umi-production
+
+# docz
+.docz

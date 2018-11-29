@@ -1,12 +1,8 @@
 import React, { PureComponent } from 'react';
-import { Affix } from 'components';
+// import { Affix } from 'components';
 
 export default class index extends PureComponent {
   render() {
-    return (
-      <Affix>
-        <span>Affix</span>
-      </Affix>
-    );
+    return <div style={{ height: 1200 }} />;
   }
 }
