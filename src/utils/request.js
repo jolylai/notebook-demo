@@ -1,30 +1,91 @@
-import fetch from 'dva/fetch';
+import axios, { CancelToken } from 'axios';
+import { cloneDeep } from 'lodash';
+import pathToRegexp from 'path-to-regexp';
 
-function parseJSON(response) {
-  return response.json();
+window.cancelRequest = new Map();
+
+axios.defaults.baseURL = 'http://localhost:8000';
+
+const CANCEL_REQUEST_MESSAGE = 'Request canceled';
+
+function getRandomColor() {
+  const tag = getRandomColor.tag + 1;
+  getRandomColor.tag = tag === 7 ? 0 : tag;
+  return getRandomColor.colors[tag];
+}
+getRandomColor.tag = 0;
+getRandomColor.colors = [
+  '#ff0000',
+  '#ff4500',
+  '#ff009d',
+  '#008000',
+  '#0000ff',
+  '#8a2be2',
+  '#000000',
+];
+
+function log(groupName, color, ...args) {
+  const { group, groupEnd, info } = console;
+  group(`%c${groupName}`, `color: ${color}`);
+  info(...args);
+  groupEnd(groupName);
 }
 
-function checkStatus(response) {
-  if (response.status >= 200 && response.status < 300) {
-    return response;
+export default function request(options) {
+  let { data, url, method = 'get' } = options;
+  const cloneData = cloneDeep(data);
+  try {
+    let domain = '';
+    const urlMatch = url.match(/[a-zA-Z]+:\/\/[^/]*/);
+    if (urlMatch) {
+      [domain] = urlMatch;
+      url = url.slice(domain.length);
+    }
+
+    const match = pathToRegexp.parse(url);
+    url = pathToRegexp.compile(url)(data);
+
+    for (let item of match) {
+      if (item instanceof Object && item.name in cloneData) {
+        delete cloneData[item.name];
+      }
+    }
+
+    url = domain + url;
+  } catch (e) {
+    console.error(e.message);
   }
 
-  const error = new Error(response.statusText);
-  error.response = response;
-  throw error;
-}
+  options.url = url;
+  options.data = cloneData;
 
-/**
- * Requests a URL, returning a promise.
- *
- * @param  {string} url       The URL we want to request
- * @param  {object} [options] The options we want to pass to "fetch"
- * @return {object}           An object containing either "data" or "err"
- */
-export default function request(url, options) {
-  return fetch(url, options)
-    .then(checkStatus)
-    .then(parseJSON)
-    .then(data => data)
-    .catch(err => ({ err }));
+  if (method.toLocaleLowerCase() === 'get') {
+    options.params = cloneData;
+  }
+
+  options.cancelToken = new CancelToken(cancel => {
+    window.cancelRequest.set(Symbol(Date.now()), {
+      pathname: window.location.pathname,
+      cancel,
+    });
+  });
+
+  const logColor = getRandomColor();
+  log('request', logColor, cloneData);
+
+  return axios(options)
+    .then(response => {
+      const { status, statusText, data } = response;
+      log('response', logColor, data);
+      return Promise.resolve(data);
+    })
+    .catch(error => {
+      const { response, message } = error;
+      if (message === CANCEL_REQUEST_MESSAGE) {
+        return Promise.reject({
+          message,
+          status: false,
+        });
+      }
+    });
 }

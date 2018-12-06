@@ -4,29 +4,28 @@
     "start": "umi dev",
     "build": "umi build",
     "lint": "eslint --ext .js src test",
-    "precommit": "npm run lint",
-    "docz:dev": "docz dev",
-    "docz:build": "docz build"
+    "precommit": "npm run lint"
   },
   "dependencies": {
-    "buble": "0.19.4",
+    "axios": "^0.18.0",
     "classnames": "^2.2.6",
-    "dva": "^2.3.1",
-    "umi": "^1.0.0",
-    "umi-plugin-dva": "^0.7.1"
+    "lodash": "^4.17.11",
+    "path-to-regexp": "^2.4.0",
+    "qs": "^6.6.0",
+    "react": "^16.7.0-alpha.2",
+    "react-dom": "^16.7.0-alpha.2",
+    "react-resizable": "^1.7.5"
   },
   "devDependencies": {
-    "@mdx-js/loader": "^0.15.0-2",
-    "@mdx-js/mdx": "^0.15.0-2",
-    "docz": "^0.12.13",
-    "docz-plugin-css": "^0.11.0",
-    "docz-theme-default": "^0.12.13",
     "eslint": "^4.14.0",
     "eslint-config-umi": "^0.1.1",
     "eslint-plugin-flowtype": "^2.34.1",
     "eslint-plugin-import": "^2.6.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.1.0",
-    "husky": "^0.12.0"
+    "husky": "^0.12.0",
+    "mockjs": "^1.0.1-beta3",
+    "umi": "^2.1.2",
+    "umi-plugin-react": "^1.1.1"
   }
 }
