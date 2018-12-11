@@ -1,0 +1,61 @@
+@import '~antd/lib/style/themes/default.less';
+@pro-header-hover-bg: rgba(0, 0, 0, 0.025);
+.header {
+  height: @layout-header-height;
+  padding: 0;
+  background: #fff;
+  position: relative;
+}
+
+.logo {
+  height: @layout-header-height;
+  line-height: @layout-header-height;
+  vertical-align: top;
+  display: inline-block;
+  padding: 0 0 0 24px;
+  cursor: pointer;
+  font-size: 20px;
+  img {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.trigger {
+  font-size: 20px;
+  height: @layout-header-height;
+  cursor: pointer;
+  transition: all 0.3s, padding 0s;
+  padding: ~'calc((@{layout-header-height} - 20px) / 2)' 24px;
+  &:hover {
+    background: @pro-header-hover-bg;
+  }
+}
+
+.right {
+  float: right;
+  .action {
+    padding: 0 12px;
+    display: inline-block;
+    height: 100%;
+    cursor: pointer;
+    &:hover {
+      background: @pro-header-hover-bg;
+    }
+  }
+  .account {
+    .avatar {
+      margin: ~'calc((@{layout-header-height} - 24px) / 2)' 0;
+      margin-right: 8px;
+      color: @primary-color;
+      background: rgba(255, 255, 255, 0.85);
+      vertical-align: top;
+    }
+  }
+}
+
+.menu {
+  height: @layout-header-height;
+  line-height: @layout-header-height;
+  border: none;
+}

@@ -81,11 +81,29 @@ export default function request(options) {
     })
     .catch(error => {
       const { response, message } = error;
+      const { status } = response;
       if (message === CANCEL_REQUEST_MESSAGE) {
         return Promise.reject({
           message,
           status: false,
         });
+      }
+
+      if (status === 401) {
+        // 用户没有权限 登出
+        return;
+      }
+      // environment should not be used
+      if (status === 403) {
+        router.push('/exception/403');
+        return;
+      }
+      if (status <= 504 && status >= 500) {
+        router.push('/exception/500');
+        return;
+      }
+      if (status >= 404 && status < 422) {
+        router.push('/exception/404');
       }
     });
 }

@@ -1,11 +1,12 @@
-import React from "react";
+import React from 'react';
 
-import BasicLayout from "./BasicLayout";
+// import BasicLayout from "./BasicLayout";
+import StandardLayout from './StandardLayout';
 
 const index = props => {
   return (
     <div>
-      <BasicLayout {...props} />
+      <StandardLayout {...props} />
     </div>
   );
 };

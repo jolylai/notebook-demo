@@ -1,9 +1,9 @@
-import React from "react";
-import { Link } from "dva/router";
-import { Layout, Menu, Breadcrumb, Icon } from "antd";
+import React from 'react';
+import { Link } from 'dva/router';
+import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 
-import { getMenuData } from "../common/menu";
-import styles from "./BasicLayout.less";
+import { getMenuData } from '../common/menu';
+import styles from './BasicLayout.less';
 
 const { Header, Content, Footer, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -22,9 +22,7 @@ const generateMenuItem = (menuData, key) => {
 };
 
 const generateMenuItemGroup = (menuData, parentKey) => {
-  return menuData.map((data, index) =>
-    generateMenuItem(data, `${parentKey}_${index}`)
-  );
+  return menuData.map((data, index) => generateMenuItem(data, `${parentKey}_${index}`));
 };
 
 const generateMenu = menuData => {
@@ -50,7 +48,7 @@ const generateMenu = menuData => {
 class BasicLayout extends React.Component {
   state = {
     collapsed: false,
-    openKeys: []
+    openKeys: [],
   };
 
   onCollapse = collapsed => {
@@ -60,9 +58,7 @@ class BasicLayout extends React.Component {
   onOpenChange = keys => {
     const { openKeys } = this.state;
     const currentOpenKey = keys.pop();
-    const newOpenKey = openKeys.includes(currentOpenKey)
-      ? []
-      : [currentOpenKey];
+    const newOpenKey = openKeys.includes(currentOpenKey) ? [] : [currentOpenKey];
     this.setState({ openKeys: newOpenKey });
   };
 
@@ -73,20 +69,20 @@ class BasicLayout extends React.Component {
 
     const menuProps = {
       openKeys,
-      theme: "dark",
-      defaultSelectedKeys: ["1"],
-      mode: "inline",
-      onOpenChange: this.onOpenChange
+      theme: 'dark',
+      defaultSelectedKeys: ['1'],
+      mode: 'inline',
+      onOpenChange: this.onOpenChange,
     };
 
     const siderProps = {
       collapsible: true,
       collapsed: collapsed,
-      onCollapse: this.onCollapse
+      onCollapse: this.onCollapse,
     };
 
     return (
-      <Layout style={{ minHeight: "100vh" }}>
+      <Layout style={{ minHeight: '100vh' }}>
         <Sider {...siderProps}>
           <div className={styles.logo} />
           <Menu {...menuProps}>{generateMenu(menuData)}</Menu>
@@ -94,17 +90,13 @@ class BasicLayout extends React.Component {
         <Layout>
           <Header className={styles.header} />
           <Content className={styles.content}>
-            <Breadcrumb style={{ margin: "16px 0" }}>
+            <Breadcrumb style={{ margin: '16px 0' }}>
               <Breadcrumb.Item>User</Breadcrumb.Item>
               <Breadcrumb.Item>Bill</Breadcrumb.Item>
             </Breadcrumb>
-            <div style={{ padding: 24, background: "#fff", minHeight: 360 }}>
-              {children}
-            </div>
+            <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>{children}</div>
           </Content>
-          <Footer style={{ textAlign: "center" }}>
-            ©2018 Created by Jolylai
-          </Footer>
+          <Footer style={{ textAlign: 'center' }}>©2018 Created by Jolylai</Footer>
         </Layout>
       </Layout>
     );
