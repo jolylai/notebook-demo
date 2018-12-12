@@ -25,4 +25,5 @@ export default {
     assets: path.resolve(__dirname, 'src/assets'),
     common: path.resolve(__dirname, 'src/common'),
   },
+  base: process.env.NODE_ENV === 'production' ? '/notebook-demo' : '/',
 };
