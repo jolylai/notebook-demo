@@ -43,6 +43,10 @@ const menuData = [
         path: 'loading',
         icon: 'loading',
       },
+      {
+        name: '弹窗',
+        path: 'dialog',
+      },
     ],
   },
   {

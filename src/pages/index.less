@@ -27,20 +27,11 @@
 }
 
 .box {
-  border-left: 150px solid #333;
-  background: #f0f3f9;
-  &::after {
-    content: '';
-    display: block;
-    clear: both;
-  }
-  &>nav {
-    width: 150px;
-    margin-left: -150px;
-    float: left;
-  }
-  &>section {
-    overflow: hidden;
+  width: 280px;
+  outline: 1px solid #aaa;
+  line-height: 0;
+  img {
+    width: 96px;
   }
 }
 
@@ -49,4 +40,13 @@
   line-height: 0.8;
   border: solid; // padding: 10px;
   background: #eee;
+}
+
+.dib-baseline {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  border: 1px solid #cad5eb;
+  background-color: #f0f3f9;
+  line-height: 0
 }
